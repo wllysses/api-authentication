@@ -40,7 +40,7 @@ export class UsersController {
             where: {
                 AND: [{ email }, { password }]
             }
-        })
+        });
 
         if(!userLogin) {
             return res.status(400).json({
