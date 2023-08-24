@@ -1,5 +1,5 @@
-import { Request, Response, NextFunction } from 'express'
-import { prisma } from '../database/db';
+import { Request, Response, NextFunction } from "express";
+import { prisma } from "../database/db";
 
 export class UsersValidate {
 
@@ -11,17 +11,17 @@ export class UsersValidate {
       where: {
         email
       }
-    })
+    });
 
     if (emailAlReadyRegistered) {
       return res.status(400).json({
         ok: false,
         message: 'E-mail já cadastrado.'
       })
-    };
+    }
 
     next();
-  };
+  }
 
   async validatePassword(req: Request, res: Response, next: NextFunction) {
 
@@ -32,10 +32,10 @@ export class UsersValidate {
         ok: false,
         message: 'As senhas precisam ser idênticas.'
       });
-    };
+    }
 
     next();
-  };
+  }
 
   async validateFields(req: Request, res: Response, next: NextFunction) {
 
@@ -46,8 +46,8 @@ export class UsersValidate {
         ok: false,
         message: 'Preencha todos os campos.'
       });
-    };
+    }
 
     next();
   }
-};
+}

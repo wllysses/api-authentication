@@ -17,8 +17,8 @@ export class UsersController {
                 confirm_password
             }
         });
-
-        return res.status(201.).json({
+        
+        return res.status(201).json({
             ok: true,
             message: 'Cadastro realizado com sucesso!',
             user: {
@@ -28,8 +28,8 @@ export class UsersController {
         });
     } catch(err) {
         next(err);
-    };
-  };
+    }
+  }
 
   async authUser(req: Request, res: Response, next: NextFunction) {
 
@@ -47,7 +47,7 @@ export class UsersController {
                 ok: false,
                 message: 'E-mail ou senha incorretos.'
             });
-        };
+        }
 
         const token = jwt.sign({ email }, process.env.SECRET_KEY!);
 
@@ -62,6 +62,6 @@ export class UsersController {
         });
     } catch(err) {
         next(err);
-    };
-  };
-};
+    }
+  }
+}
